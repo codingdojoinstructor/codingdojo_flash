@@ -1,0 +1,16 @@
+<h1>Questions#index</h1>
+<p>Find me in app/views/questions/index.html.erb</p>
+<h1>Flash Questions</h2>
+<table class="table table-striped">
+	<thead>
+		<th>Question</th>
+	</thead>
+	<tbody>
+	<% @questions.each do |q| %>
+		<tr>
+			<td><%= q.content %></td>
+			<td><%= q.level_id %></td>
+		</tr>
+	<% end %>
+	</tbody>
+</table>
