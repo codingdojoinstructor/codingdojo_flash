@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   def index
-    # @questions = Question.all
+    @questions = Question.all
     # counter = Question.count
     # qid = rand(1..counter)
     # if qid == 0
