@@ -1,0 +1,10 @@
+<h1>Questions#index</h1>
+<p>Find me in app/views/questions/index.html.erb</p>
+<h1><%= @question.content %></h2>
+<% @answers.each do |a| %>
+	<% if a.right_answer != 1 %>
+		<li><%= a.content %></li>
+	<% else %>
+		<li class="alert-success"><%= a.content %></li>
+	<% end %>
+<% end %>

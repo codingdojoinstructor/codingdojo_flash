@@ -1,2 +1,12 @@
 <h1>Questions#new</h1>
 <p>Find me in app/views/questions/new.html.erb</p>
+<%= simple_form_for @question do |f| %>
+	<%= f.input :content, :label => "Question" %>
+	<%= f.association :level, :include_blank => false %>
+	<%= f.association :topic, :include_blank => false %>
+	<%= f.fields_for :answers do |builder| %>
+		<%= builder.input :content, :label => "Answer" %>
+		<%= builder.input :right_answer, :label => "Right Answer" %>
+	<% end %>
+	<%= f.button :submit %>
+<% end %>
