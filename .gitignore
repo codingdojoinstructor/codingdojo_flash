@@ -16,3 +16,6 @@
 /tmp
 
 /config/database.yml
+
+# Ignore Macs strange profile rememberer.
+/.DS_STORE
