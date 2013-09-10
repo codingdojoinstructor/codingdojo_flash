@@ -1,14 +1,31 @@
 class QuestionsController < ApplicationController
   def index
     @questions = Question.all
-    counter = Question.count
-    qid = rand(1..counter)
-    if qid == 0
-      qid = 1
+    @level = Level.select(:id)
+    level_array = []
+    @level.each do |l|
+      level_array.push(l.id)
     end
+    level = level_array[0]
+    if !params[:level].nil?
+      level_index = params[:level].to_i
+      level = level_array[level_index]
+    end
+
+    counter = Question.where(:level_id => level).select(:id).count
+    questions = Question.where(:level_id => level).select(:id)
+    num = 0
+    if counter > 1
+      num = rand(0..counter)
+    end
+    qid = questions[num][:id]
     new_question = Question.find(qid)
     answers = new_question.answers.all
-    data = { :questions => new_question, :answers => answers }
+    top = Topic.find(new_question.topic)
+    belt = top.belt
+    topic = top.name
+    level_name = Level.select(:name).find(level).name
+    data = { :questions => new_question, :answers => answers, :level_name => level_name, :level => level_index, :belt => belt, :topic => topic }
     respond_to do |format|
       format.html
       format.json { render json: data }
