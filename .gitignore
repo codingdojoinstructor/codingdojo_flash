@@ -14,7 +14,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
-/.ruby_version
+/.ruby-version
 /config/database.yml
 
 # Ignore Macs strange profile rememberer.
